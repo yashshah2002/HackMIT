@@ -1,19 +1,12 @@
 .App {
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.600);
-  margin: -30px auto 0 auto;
-  padding: 2rem;
-  width: 60%;
-  height: 100vh;
-  color:  rgb(255, 255, 255);
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.600),
-    -10px 10px 20px rgba(0, 0, 0, 0.600);
+  
 }
 
 body {
-	background: linear-gradient(60deg, #2b1b16, #29161d, #17282e, #1d332e);
-	background-size: 400% 1000%;
-	animation: gradient 12s ease infinite;
+	background: linear-gradient(60deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 850% 850%;
+	animation: gradient 15s ease infinite;
 }
 
 @keyframes gradient {
