@@ -110,12 +110,14 @@ function App() {
         value={textToAnalyze}
         onChange={handleChange}
         variant="filled"
+        style={{width:"500px"}}
       />
       <Button
         variant="contained"
         color="primary"
         disabled={loading}
         onClick={analyzeText}
+        style={{margin:"1rem"}}
       >
         Analyze
         {loading && <CircularProgress size={24} />}
