@@ -98,15 +98,25 @@ function App() {
     setTextToAnalyze(newValue);
   };
 
+  const [type, setType] = useState("Text");
+
+  const typeChange = (event) => {
+    setType(event.target.value);
+  };
+
   return (
     <div className="App">
       <Container>
         <h1>Tonus</h1>
         <div>
           Type
-          <Select>
-            <MenuItem>Text</MenuItem>
-            <MenuItem>Audio</MenuItem>
+          <Select
+            value={type}
+            onChange={typeChange}
+            style={{ margin: "1rem", width: "80px" }}
+          >
+            <MenuItem value="Text">Text</MenuItem>
+            <MenuItem value="Audio">Audio</MenuItem>
           </Select>
           Media Mode
           <Checkbox
@@ -123,12 +133,14 @@ function App() {
           value={textToAnalyze}
           onChange={handleChange}
           variant="filled"
+          style={{ width: "500px" }}
         />
         <Button
           variant="contained"
           color="primary"
           disabled={loading}
           onClick={analyzeText}
+          style={{ margin: "1rem" }}
         >
           Analyze
           {loading && <CircularProgress size={24} />}
