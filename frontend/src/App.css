@@ -1,14 +1,13 @@
 .App {
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.452);
+  background-color: rgba(0, 0, 0, 0.600);
   margin: -30px auto 0 auto;
   padding: 2rem;
   width: 60%;
   height: 100vh;
   color:  rgb(255, 255, 255);
-  border-radius: 15px;
-  box-shadow: 10px 0px 50px rgba(0, 0, 0, 0.452),
-    -10px 0px 50px rgba(0, 0, 0, 0.452);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.600),
+    -10px 10px 20px rgba(0, 0, 0, 0.600);
 }
 
 body {
