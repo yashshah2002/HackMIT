@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
 import axios from "axios";
 import "./App.css";
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import Checkbox from '@material-ui/core/Checkbox';
 
 function App() {
   let [textToAnalyze, setTextToAnalyze] = useState("");
@@ -26,22 +28,22 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <input type="text" value={textToAnalyze} onChange={handleChange} />
-        <button onClick={() => analyzeText()}>Analyze</button>
-      </header>
+      <h1>Tonus</h1>
+      <div>
+        Type
+        <Select>
+          <MenuItem>Text</MenuItem>
+          <MenuItem>Audio</MenuItem>
+        </Select>
+        Media Mode
+        <Checkbox
+            color="primary"
+        />
+      </div>
+
+      <input type="text" value={textToAnalyze} onChange={handleChange} />
+      <button onClick={() => analyzeText()}>Analyze</button>
+
     </div>
   );
 }
