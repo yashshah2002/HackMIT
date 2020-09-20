@@ -35,7 +35,6 @@ function App() {
   };
 
   const getColor = (tone) => {
-    console.log(tone.tone_id);
     switch (tone.tone_id) {
       case "analytic":
         return "blue";
