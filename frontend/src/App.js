@@ -90,9 +90,10 @@ function App() {
 
   const displaySubData = () => {
     return (
-      <Card width="40%">
+      <Card width="40%" style={{ margin: 10 }}>
         <CardContent>
-          <p>{subData}</p>
+          <h3>Subjectivity: </h3>
+          <p>{Math.floor(subData * 100)}%</p>
         </CardContent>
       </Card>
     );
@@ -122,7 +123,7 @@ function App() {
           <MenuItem value="Text">Text</MenuItem>
           <MenuItem value="Audio">Audio</MenuItem>
         </Select>
-        Media Mode
+        Online Article
         <Checkbox
           checked={isChecked}
           onChange={() => setIsChecked(!isChecked)}
