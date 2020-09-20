@@ -1,24 +1,35 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Button from "@material-ui/core/Button";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import Checkbox from "@material-ui/core/Checkbox";
+
 import "./App.css";
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import Checkbox from '@material-ui/core/Checkbox';
 
 function App() {
-  let [textToAnalyze, setTextToAnalyze] = useState("");
+  const [loading, setLoading] = React.useState(false);
+  const [textToAnalyze, setTextToAnalyze] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
+  const [data, setData] = useState(null);
 
   const analyzeText = async () => {
+    setLoading(true);
     console.log("Analyzing", textToAnalyze);
-    const response = await axios.get(
-      `https://us-central1-saloni-shivdasani.cloudfunctions.net/subjectivity-analyzer?text=${textToAnalyze}`,
-      {
-        headers: {
-          "Access-Control-Allow-Origin": "http://localhost:3000",
-        },
-      }
-    );
-    console.log(response);
+    if (isChecked) {
+      const response = await axios.get(
+        `https://us-central1-saloni-shivdasani.cloudfunctions.net/subjectivity-analyzer?text=${textToAnalyze}`,
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "http://localhost:3000",
+          },
+        }
+      );
+      console.log(response);
+    }
+    setData("test");
+    setLoading(false);
   };
 
   const handleChange = (event) => {
@@ -37,13 +48,22 @@ function App() {
         </Select>
         Media Mode
         <Checkbox
-            color="primary"
+          checked={isChecked}
+          onChange={() => setIsChecked(!isChecked)}
+          color="primary"
         />
       </div>
 
       <input type="text" value={textToAnalyze} onChange={handleChange} />
-      <button onClick={() => analyzeText()}>Analyze</button>
-
+      <Button
+        variant="contained"
+        color="primary"
+        disabled={loading}
+        onClick={analyzeText}
+      >
+        Analyze
+        {loading && <CircularProgress size={24} />}
+      </Button>
     </div>
   );
 }
