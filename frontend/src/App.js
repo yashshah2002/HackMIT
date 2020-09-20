@@ -90,7 +90,7 @@ function App() {
       <h1>Tonus</h1>
       <div>
         Type
-        <Select value={type} onChange={typeChange} style={{ margin: "1rem"}}>
+        <Select value={type} onChange={typeChange} style={{ margin: "1rem", width:"80px"}}>
           <MenuItem value="Text">Text</MenuItem>
           <MenuItem value="Audio">Audio</MenuItem>
         </Select>
