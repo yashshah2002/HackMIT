@@ -25,14 +25,9 @@ function App() {
     setToneData(response.data);
     if (isChecked) {
       const response = await axios.get(
-        `https://us-central1-saloni-shivdasani.cloudfunctions.net/subjectivity-analyzer?text=${textToAnalyze}`,
-        {
-          headers: {
-            "Access-Control-Allow-Origin": "http://localhost:3000",
-          },
-        }
+        `http://localhost:5000/subjectivity?text=${textToAnalyze}`
       );
-      setSubData(response);
+      setSubData(response.data.subjectivity);
     }
     setLoading(false);
   };
