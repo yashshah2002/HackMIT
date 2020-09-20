@@ -79,15 +79,22 @@ function App() {
     setTextToAnalyze(newValue);
   };
 
+  const [type, setType] = useState('');
+
+  const typeChange = (event) => {
+    setType(event.target.value);
+  };
+
   return (
     <div className="App">
       <h1>Tonus</h1>
       <div>
         Type
-        <Select>
-          <MenuItem>Text</MenuItem>
-          <MenuItem>Audio</MenuItem>
+        <Select value={type} onChange={typeChange} style={{ margin: "1rem", width:"80px"}}>
+          <MenuItem value="Text">Text</MenuItem>
+          <MenuItem value="Audio">Audio</MenuItem>
         </Select>
+
         Media Mode
         <Checkbox
           checked={isChecked}
