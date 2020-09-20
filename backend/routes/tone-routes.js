@@ -12,26 +12,18 @@ const toneAnalyzer = new ToneAnalyzerV3({
   serviceUrl: "https://api.us-south.tone-analyzer.watson.cloud.ibm.com",
 });
 
-const text =
-  "Team, I know that times are tough! Product " +
-  "sales have been disappointing for the past three " +
-  "quarters. We have a competitive product, but we " +
-  "need to do a better job of selling it!";
-
-const toneParams = {
-  toneInput: { text: text },
-  contentType: "application/json",
-};
-
-router.get("/", async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   let toneAnalysis;
   try {
-    toneAnalysis = await toneAnalyzer.tone(toneParams);
+    toneAnalysis = await toneAnalyzer.tone({
+      toneInput: { text: req.body.text },
+      contentType: "application/json",
+    });
   } catch (err) {
-    console.log(err);
+    console.log("Error: " + err);
   }
-  console.log(JSON.stringify(toneAnalysis, null, 2));
-  return res.status(200).json(toneAnalysis);
+  console.log(toneAnalysis.result);
+  return res.status(200).json(toneAnalysis.result);
 });
 
 module.exports = router;
