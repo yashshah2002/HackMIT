@@ -79,7 +79,7 @@ function App() {
     setTextToAnalyze(newValue);
   };
 
-  const [type, setType] = useState('');
+  const [type, setType] = useState("Text");
 
   const typeChange = (event) => {
     setType(event.target.value);
