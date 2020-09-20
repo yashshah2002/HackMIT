@@ -5,6 +5,7 @@ require("dotenv").config();
 
 const toneRoutes = require("./routes/tone-routes");
 const subjRoutes = require("./routes/subjectivity-routes");
+const s2tRoutes = require("./routes/speech-to-text");
 
 const app = express();
 
@@ -16,5 +17,6 @@ app.get("/", (req, res) => {
 });
 app.use("/tone", toneRoutes);
 app.use("/subjectivity", subjRoutes);
+app.use("/s2t", s2tRoutes);
 
 app.listen(5000);
