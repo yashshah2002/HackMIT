@@ -73,8 +73,9 @@ function App() {
       );
     });
 
+    const widthCheck = isChecked ? "40%" : "70%";
     return (
-      <Card width="70%">
+      <Card style={{ width: widthCheck }}>
         <CardContent>
           {overallTone} <p>{lineByLine}</p>
         </CardContent>
@@ -83,7 +84,13 @@ function App() {
   };
 
   const displaySubData = () => {
-    return <h1>hi</h1>;
+    return (
+      <Card width="40%">
+        <CardContent>
+          <p>{subData}</p>
+        </CardContent>
+      </Card>
+    );
   };
 
   const handleChange = (event) => {
@@ -126,8 +133,10 @@ function App() {
           Analyze
           {loading && <CircularProgress size={24} />}
         </Button>
-        {toneData && displayToneData()}
-        {subData && displaySubData()}
+        <div style={{ display: "flex" }}>
+          {toneData && displayToneData()}
+          {subData && displaySubData()}
+        </div>
       </Container>
     </div>
   );
