@@ -58,27 +58,33 @@ function App() {
       </h3>
     ));
 
-    const lineByLine = toneData.sentences_tone.map((sentence) => {
-      if (sentence.tones.length === 0) return <span>{sentence.text} </span>;
-      return (
-        <span
-          className={getColor(
-            sentence.tones.reduce((prev, current) => {
-              return prev.score > current.score ? prev : current;
-            })
-          )}
-        >
-          {sentence.text}{" "}
-        </span>
-      );
-    });
+    let lineByLine = null;
+    if (toneData.sentences_tone) {
+      lineByLine = toneData.sentences_tone.map((sentence) => {
+        if (sentence.tones.length === 0) return <span>{sentence.text} </span>;
+        return (
+          <span
+            className={getColor(
+              sentence.tones.reduce((prev, current) => {
+                return prev.score > current.score ? prev : current;
+              })
+            )}
+          >
+            {sentence.text}{" "}
+          </span>
+        );
+      });
+    }
 
     const widthCheck = isChecked ? "40%" : "70%";
     return (
       <Card style={{ width: widthCheck }}>
-        <CardContent>
-          {overallTone} <p>{lineByLine}</p>
-        </CardContent>
+        {lineByLine && (
+          <CardContent>
+            {overallTone} <p>{lineByLine}</p>
+          </CardContent>
+        )}
+        {!lineByLine && <p>Needs more input data.</p>}
       </Card>
     );
   };
