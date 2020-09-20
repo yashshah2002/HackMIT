@@ -145,9 +145,9 @@ function App() {
           Analyze
           {loading && <CircularProgress size={24} />}
         </Button>
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", flexDirection: "row" }}>
           {toneData && displayToneData()}
-          {subData && displaySubData()}
+          {isChecked && subData && displaySubData()}
         </div>
       </Container>
     </div>
