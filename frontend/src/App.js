@@ -89,13 +89,13 @@ function App() {
     <div className="App">
       <h1>Tonus</h1>
       <div>
-        Type
+        Type:
         <Select value={type} onChange={typeChange} style={{ margin: "1rem", width:"80px"}}>
           <MenuItem value="Text">Text</MenuItem>
           <MenuItem value="Audio">Audio</MenuItem>
         </Select>
 
-        Media Mode
+        Media Mode:
         <Checkbox
           checked={isChecked}
           onChange={() => setIsChecked(!isChecked)}
