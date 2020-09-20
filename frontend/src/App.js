@@ -21,7 +21,6 @@ function App() {
     const response = await axios.post("http://localhost:5000/tone", {
       text: textToAnalyze,
     });
-    console.log(response.data);
     setToneData(response.data);
     if (isChecked) {
       const response = await axios.get(
@@ -32,10 +31,45 @@ function App() {
     setLoading(false);
   };
 
-  const displayToneData = () => {
-    console.log(toneData);
-    return <h1>hi</h1>;
+  const getColor = (tone) => {
+    switch (tone.tone_id) {
+      case "analytic":
+        return "blue";
+      case "tentative":
+        return "green";
+      default:
+        return "black";
+    }
   };
+
+  const displayToneData = () => {
+    console.log(toneData.document_tone.tones);
+    const overallTone = toneData.document_tone.tones.map((tone) => (
+      <h3>
+        {tone.tone_name} - {Math.floor(tone.score * 100)}%
+      </h3>
+    ));
+
+    const lineByLine = toneData.sentences_tone.map((sentence) => {
+      if (sentence.tones.length === 0) return <span>{sentence.text}</span>;
+      return (
+        <span
+          className={getColor(
+            sentence.tones.reduce((a, b) => Math.max(a.score, b.score))
+          )}
+        >
+          {sentence.text}
+        </span>
+      );
+    });
+
+    return (
+      <div>
+        {overallTone} <p>{lineByLine}</p>
+      </div>
+    );
+  };
+
   const displaySubData = () => {
     return <h1>hi</h1>;
   };

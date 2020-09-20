@@ -22,7 +22,6 @@ router.post("/", async (req, res, next) => {
   } catch (err) {
     console.log("Error: " + err);
   }
-  console.log(toneAnalysis.result);
   return res.status(200).json(toneAnalysis.result);
 });
 
